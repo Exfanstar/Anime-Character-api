@@ -11,6 +11,8 @@ COPY ./requirements.dev.txt /tmp/requirements.dev.txt
 ARG  DEV=false
 RUN python -m venv /py &&\
     /py/bin/pip install --upgrade pip && \
+    apk update && \
+    apk upgrade && \
     apk add --update --no-cache postgresql-client &&\
     apk add --update --no-cache --virtual .tmp-build-deps \
         build-base postgresql-dev musl-dev && \
